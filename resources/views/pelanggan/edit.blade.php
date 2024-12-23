@@ -1,0 +1,121 @@
+@extends('layouts.adminlayout')
+@section('title', 'Edit Pelanggan')
+
+@section('content')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pelanggan</title>
+    <!-- Menyertakan CSS untuk desain tampilan -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-submit {
+            background-color: #28a745; /* Warna hijau untuk tombol Update */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 48%;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .btn-back {
+            background-color: #6c757d; /* Warna abu-abu untuk tombol Kembali */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 48%;
+            text-align: center;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; /* Menambahkan jarak antar tombol */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Edit Pelanggan</h1>
+        <form action="{{ route('pelanggan.update', $pelanggan->id_pelanggan) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="Nama_Pelanggan">Nama Pelanggan:</label>
+                <input type="text" name="Nama_Pelanggan" id="Nama_Pelanggan" value="{{ $pelanggan->Nama_Pelanggan }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="NoHP">No HP:</label>
+                <input type="text" name="NoHP" id="NoHP" value="{{ $pelanggan->NoHP }}" required>
+            </div>
+
+            <div class="form-group button-group">
+                <!-- Tombol Update di kiri -->
+                <button type="submit" class="btn-submit">Update</button>
+
+                <!-- Tombol Kembali di kanan -->
+                <button type="button" class="btn-back" onclick="window.location.href='{{ route('pelanggan.index') }}'">Kembali</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+@endsection

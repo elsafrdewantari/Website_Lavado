@@ -1,0 +1,21 @@
+
+/* Styling untuk Footer */
+.footer {
+    background-color: #00ABA6; /* Warna biru */
+    color: white;
+    padding: 20px 0;
+}
+
+.footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer img {
+    max-width: 100px;
+}
